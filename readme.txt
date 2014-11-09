@@ -1,7 +1,7 @@
 === Related Post ===
 	Contributors: paratheme
 	Donate link: http://paratheme.com
-	Tags: related post
+	Tags: related post, related posts, related content, related post list, related, similar posts
 	Requires at least: 3.8
 	Tested up to: 4.0
 	Stable tag: 1.0
@@ -17,7 +17,7 @@ Related Post allows you to display related post under post or other post type vi
 How it is work ?
 Related Post will display post list from same categories or tags match for post.
 
-### Star Rating by http://paratheme.com
+### Related Post by http://paratheme.com
 
 
 <strong>Plugin Features</strong><br />
@@ -37,7 +37,7 @@ N.B. We are working on this plugin making some fancy star rating.
 1. Install as regular WordPress plugin.<br />
 2. Go your plugin setting via WordPress dashboard and find "<strong>Related Post</strong>" activate it.<br />
 
-After activate plugin you will see "Star Rating" menu at left side on WordPress dashboard.<br />
+After activate plugin you will see "Related Post" menu at left side on WordPress dashboard.<br />
 
 short-code inside content for fixed post id you can use anywhere inside content.
 
@@ -54,7 +54,7 @@ echo do_shortcode( '[related_post themes="flat" id="'.get_the_ID().'"]' );
 == Screenshots ==
 
 1. screenshot-1
-
+2. screenshot-2
 
 == Changelog ==
 
