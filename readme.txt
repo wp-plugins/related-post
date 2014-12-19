@@ -4,7 +4,7 @@
 	Tags: related post, related posts, related content, related post list, related, similar posts
 	Requires at least: 3.8
 	Tested up to: 4.0
-	Stable tag: 1.0
+	Stable tag: 1.1
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,12 @@ echo do_shortcode( '[related_post themes="flat" id="'.get_the_ID().'"]' );
 
 == Changelog ==
 
+
+	= 1.1 =
+	
+    * 19/11/2014 add - Default empty thumb.
+    * 19/11/2014 add - Headling text for "Related Post".
+    
 	= 1.0 =
 	
     * 09/11/2014 Initial release.

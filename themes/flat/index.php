@@ -4,13 +4,25 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 
 function related_post_theme_flat()
 	{
+		$related_post_headline = get_option( 'related_post_headline' );
+		
 		$post_id = get_the_ID();
 	
 
 			
 		$html = '';
-		$html .= '<div  class="related-post flat" >';	
-		$html .= '<div  class="related-post-title" >Related Post</div>';	
+		$html .= '<div  class="related-post flat" >';
+		if(!empty($related_post_headline))
+			{
+			$html .= '<div  class="related-post-headline" >'.$related_post_headline.'</div>';
+			}
+		else
+			{
+			$html .= '<div  class="related-post-headline" >Related Post</div>';
+			}
+		
+		
+			
 		$html .= '<ul class="post-list">';
 		if (has_tag()) {
 			
@@ -35,10 +47,20 @@ function related_post_theme_flat()
 								$thumb_url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
 								
 								$html .= '<li class="related-post-single">';
-								$html .= '<div class="related-post-thumb"><img src="'.$thumb_url.'" /></div>';
-								
 								$html.= '<a href="'.get_the_permalink().'" >';
-								$html .= get_the_title('', '', true, '40');
+								$html.= '<div class="related-post-thumb no-thumb">';
+								
+								if(!empty($thumb_url))
+									{
+										$html .= '<img src="'.$thumb_url.'" />';
+									}
+								else
+									{
+										$html .= '<img src="'.related_post_plugin_url.'css/no-thumb.png" />';
+									}
+									
+								$html .= '</div>';
+								$html .= '<div class="related-post-title">'.get_the_title('', '', true, '40').'</div>';
 								$html .= '</a>';
 								$html .= '</li>';
 							
@@ -69,9 +91,20 @@ function related_post_theme_flat()
 									$thumb_url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
 									
 									$html .= '<li class="related-post-single">';
-									$html .= '<div class="related-post-thumb"><img src="'.$thumb_url.'" /></div>';
-									$html .= '<a href="'.get_the_permalink() .'" >';
-									$html .= get_the_title('', '', true, '40');
+									$html.= '<a href="'.get_the_permalink().'" >';
+									$html.= '<div class="related-post-thumb no-thumb">';
+									
+									if(!empty($thumb_url))
+										{
+											$html .= '<img src="'.$thumb_url.'" />';
+										}
+									else
+										{
+											$html .= '<img src="'.related_post_plugin_url.'css/no-thumb.png" />';
+										}
+										
+									$html .= '</div>';
+									$html .= '<div class="related-post-title">'.get_the_title('', '', true, '40').'</div>';
 									$html .= '</a>';
 									$html .= '</li>';
 									

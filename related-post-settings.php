@@ -8,7 +8,7 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 if(empty($_POST['related_post_hidden']))
 	{
 
-	
+	$related_post_headline = get_option( 'related_post_headline' );
 
 	
 	
@@ -19,8 +19,8 @@ else
 		if($_POST['related_post_hidden'] == 'Y') {
 			//Form data sent
 
-	
-
+			$related_post_headline = stripslashes_deep($_POST['related_post_headline']);
+			update_option('related_post_headline', $related_post_headline);
 	
 	
 			?>
@@ -47,13 +47,25 @@ else
 
     <div class="para-settings up-paratheme-settings">
     
-        <ul class="tab-nav"> 
-            <li nav="1" class="nav1 active">Short-Codes</li>
-            <li nav="2" class="nav2">Help & Upgrade</li>
+        <ul class="tab-nav">
+            <li nav="1" class="nav1 active">Options</li>
+            <li nav="2" class="nav2">Short-Codes</li>
+            <li nav="3" class="nav3">Help & Upgrade</li>
         </ul> <!-- tab-nav end -->   
     
 		<ul class="box">
             <li style="display: block;" class="box1 tab-box active">
+            
+				<div class="option-box">
+                    <p class="option-title">Head line text</p>
+                    <p class="option-info"></p>
+                    <input placeholder="Related Posts..." type="text" name="related_post_headline" value="<?php if(!empty($related_post_headline)) echo $related_post_headline; else ''; ?>" />
+
+                </div>  
+            
+            </li>
+        
+            <li style="display: none;" class="box2 tab-box">
 				
 				<div class="option-box">
                     <p class="option-title">Short-code for php file</p>
@@ -75,7 +87,7 @@ else
             </li>
             
             
-			<li style="display: none;" class="box2 tab-box active">
+			<li style="display: none;" class="box3 tab-box">
 				
 				<div class="option-box">
                     <p class="option-title">Need Help ?</p>

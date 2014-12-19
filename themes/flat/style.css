@@ -11,7 +11,7 @@
 }
 
 
-.related-post.flat .related-post-title {
+.related-post.flat .related-post-headline {
   display: block;
   font-size: 18px;
   font-weight: bold;
@@ -40,15 +40,24 @@
   overflow: hidden;
   width: 150px;
 }
-.related-post.flat li .related-post-thumb img{
-
+.related-post.flat li .related-post-thumb img {
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
+
+.related-post.flat li .related-post-title {
+  padding: 10px 0;
+}
+
+
 
 .related-post.flat ul.post-list li a {
   display: block;
   font-size: 12px;
   line-height: 20px;
-  margin: 6px 0;
+  margin: 0;
   padding: 0;
   text-decoration: none;
 }
