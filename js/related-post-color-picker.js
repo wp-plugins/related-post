@@ -2,7 +2,7 @@
 		{	
 
 
-			jQuery('#related-post_items_position_color ').wpColorPicker();
+			jQuery('.related_post_title_font_color ').wpColorPicker();
 					
 					
 

@@ -4,13 +4,26 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 
 function related_post_theme_text()
 	{
+		
+		$related_post_headline = get_option( 'related_post_headline' );
+		$related_post_title_font_size = get_option( 'related_post_title_font_size' );
+		$related_post_title_font_color = get_option( 'related_post_title_font_color' );
+		
+		
 		$post_id = get_the_ID();
 	
 
 			
 		$html = '';
 		$html .= '<div  class="related-post text" >';
-		$html .= '<div  class="related-post-title" >Related Post</div>';		
+		if(!empty($related_post_headline))
+			{
+			$html .= '<div  class="related-post-headline" >'.$related_post_headline.'</div>';
+			}
+		else
+			{
+			$html .= '<div  class="related-post-headline" >Related Post</div>';
+			}	
 		$html .= '<ul class="post-list">';
 		if (has_tag()) {
 			
@@ -33,7 +46,7 @@ function related_post_theme_text()
 							while ($my_query->have_posts()) : $my_query->the_post();
 							
 								$html .= '<li class="related-post-single">';
-								$html.= '<a href="'.get_the_permalink().'" >';
+								$html.= '<a style="font-size:'.$related_post_title_font_size.';color:'.$related_post_title_font_color.';" href="'.get_the_permalink().'" >';
 								$html .= get_the_title('', '', true, '40');
 								$html .= '</a>';
 								$html .= '</li>';
@@ -62,7 +75,7 @@ function related_post_theme_text()
 						while ($nextloop->have_posts()) : $nextloop->the_post();
 							
 							$html .= '<li class="related-post-single">';
-							$html .= '<a href="'.get_the_permalink() .'" >';
+							$html .= '<a style="font-size:'.$related_post_title_font_size.';color:'.$related_post_title_font_color.';" href="'.get_the_permalink() .'" >';
 							$html .= get_the_title('', '', true, '40');
 							$html .= '</a>';
 							$html .= '</li>';

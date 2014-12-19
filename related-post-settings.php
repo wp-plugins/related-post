@@ -5,30 +5,37 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 
 
 
-if(empty($_POST['related_post_hidden']))
-	{
-
-	$related_post_headline = get_option( 'related_post_headline' );
-
+	if(empty($_POST['related_post_hidden']))
+		{
 	
-	
+		$related_post_headline = get_option( 'related_post_headline' );
+		$related_post_title_font_size = get_option( 'related_post_title_font_size' );
+		$related_post_title_font_color = get_option( 'related_post_title_font_color' );		
 		
-	}
-else
-	{	
-		if($_POST['related_post_hidden'] == 'Y') {
-			//Form data sent
-
-			$related_post_headline = stripslashes_deep($_POST['related_post_headline']);
-			update_option('related_post_headline', $related_post_headline);
+			
+		}
+	else
+		{	
+			if($_POST['related_post_hidden'] == 'Y') {
+				//Form data sent
 	
-	
-			?>
-			<div class="updated"><p><strong><?php _e('Changes Saved.' ); ?></strong></p></div>
-	
-			<?php
-			} 
-	}
+				$related_post_headline = stripslashes_deep($_POST['related_post_headline']);
+				update_option('related_post_headline', $related_post_headline);
+				
+				$related_post_title_font_size = stripslashes_deep($_POST['related_post_title_font_size']);
+				update_option('related_post_title_font_size', $related_post_title_font_size);
+				
+				$related_post_title_font_color = stripslashes_deep($_POST['related_post_title_font_color']);
+				update_option('related_post_title_font_color', $related_post_title_font_color);							
+				
+		
+		
+				?>
+				<div class="updated"><p><strong><?php _e('Changes Saved.' ); ?></strong></p></div>
+		
+				<?php
+				} 
+		}
 ?>
 
 
@@ -61,7 +68,19 @@ else
                     <p class="option-info"></p>
                     <input placeholder="Related Posts..." type="text" name="related_post_headline" value="<?php if(!empty($related_post_headline)) echo $related_post_headline; else ''; ?>" />
 
-                </div>  
+                </div>
+				<div class="option-box">
+                    <p class="option-title">Post title font size</p>
+                    <p class="option-info"></p>
+                    <input placeholder="13px" type="text" name="related_post_title_font_size" value="<?php if(!empty($related_post_title_font_size)) echo $related_post_title_font_size; else ''; ?>" />
+
+                </div>      
+				<div class="option-box">
+                    <p class="option-title">Post title font color</p>
+                    <p class="option-info"></p>
+                    <input class="related_post_title_font_color" placeholder="#ffffff" type="text" name="related_post_title_font_color" value="<?php if(!empty($related_post_title_font_color)) echo $related_post_title_font_color; else ''; ?>" />
+
+                </div>     
             
             </li>
         

@@ -5,6 +5,9 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 function related_post_theme_flat()
 	{
 		$related_post_headline = get_option( 'related_post_headline' );
+		$related_post_title_font_size = get_option( 'related_post_title_font_size' );
+		$related_post_title_font_color = get_option( 'related_post_title_font_color' );		
+			
 		
 		$post_id = get_the_ID();
 	
@@ -60,7 +63,7 @@ function related_post_theme_flat()
 									}
 									
 								$html .= '</div>';
-								$html .= '<div class="related-post-title">'.get_the_title('', '', true, '40').'</div>';
+								$html .= '<div style="font-size:'.$related_post_title_font_size.';color:'.$related_post_title_font_color.';" class="related-post-title">'.get_the_title('', '', true, '40').'</div>';
 								$html .= '</a>';
 								$html .= '</li>';
 							
@@ -104,7 +107,7 @@ function related_post_theme_flat()
 										}
 										
 									$html .= '</div>';
-									$html .= '<div class="related-post-title">'.get_the_title('', '', true, '40').'</div>';
+									$html .= '<div style="font-size:'.$related_post_title_font_size.';color:'.$related_post_title_font_color.';" class="related-post-title">'.get_the_title('', '', true, '40').'</div>';
 									$html .= '</a>';
 									$html .= '</li>';
 									

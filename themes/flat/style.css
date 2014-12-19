@@ -48,6 +48,7 @@
 }
 
 .related-post.flat li .related-post-title {
+  line-height: normal;
   padding: 10px 0;
 }
 

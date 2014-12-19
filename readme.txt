@@ -63,6 +63,8 @@ echo do_shortcode( '[related_post themes="flat" id="'.get_the_ID().'"]' );
 	
     * 19/11/2014 add - Default empty thumb.
     * 19/11/2014 add - Headling text for "Related Post".
+    * 19/11/2014 add - Font size for post title.
+    * 19/11/2014 add - Font color for post title.
     
 	= 1.0 =
 	
