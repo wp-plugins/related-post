@@ -8,6 +8,7 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 	if(empty($_POST['related_post_hidden']))
 		{
 	
+		$related_post_max_number = get_option( 'related_post_max_number' );	
 		$related_post_headline = get_option( 'related_post_headline' );
 		$related_post_title_font_size = get_option( 'related_post_title_font_size' );
 		$related_post_title_font_color = get_option( 'related_post_title_font_color' );		
@@ -19,13 +20,16 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 			if($_POST['related_post_hidden'] == 'Y') {
 				//Form data sent
 	
-				$related_post_headline = stripslashes_deep($_POST['related_post_headline']);
+				$related_post_max_number = sanitize_text_field($_POST['related_post_max_number']);
+				update_option('related_post_max_number', $related_post_max_number);	
+	
+				$related_post_headline = sanitize_text_field($_POST['related_post_headline']);
 				update_option('related_post_headline', $related_post_headline);
 				
-				$related_post_title_font_size = stripslashes_deep($_POST['related_post_title_font_size']);
+				$related_post_title_font_size = sanitize_text_field($_POST['related_post_title_font_size']);
 				update_option('related_post_title_font_size', $related_post_title_font_size);
 				
-				$related_post_title_font_color = stripslashes_deep($_POST['related_post_title_font_color']);
+				$related_post_title_font_color = sanitize_text_field($_POST['related_post_title_font_color']);
 				update_option('related_post_title_font_color', $related_post_title_font_color);							
 				
 		
@@ -62,6 +66,14 @@ if ( ! defined('ABSPATH')) exit; // if direct access
     
 		<ul class="box">
             <li style="display: block;" class="box1 tab-box active">
+            
+            
+				<div class="option-box">
+                    <p class="option-title">Maximum number of post to display</p>
+                    <p class="option-info"></p>
+                    <input placeholder="4" type="text" name="related_post_max_number" value="<?php if(!empty($related_post_max_number)) echo $related_post_max_number; else '4'; ?>" />
+
+                </div>            
             
 				<div class="option-box">
                     <p class="option-title">Head line text</p>

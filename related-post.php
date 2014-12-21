@@ -3,7 +3,7 @@
 Plugin Name: Related Post
 Plugin URI: 
 Description: Display Related Post under post by tags and category.
-Version: 1.1
+Version: 1.2
 Author: paratheme
 Author URI: http://paratheme.com
 License: GPLv2 or later
@@ -64,11 +64,11 @@ add_action("init","related_post_init_scripts");
 
 
 register_activation_hook(__FILE__, 'related_post_activation');
-
+register_deactivation_hook(__FILE__, 'related_post_deactivation');
 
 function related_post_activation()
 	{
-		$related_post_version= "1.1";
+		$related_post_version= "1.2";
 		update_option('related_post_version', $related_post_version); //update plugin version.
 		
 		$related_post_customer_type= "free"; //customer_type "free"
@@ -96,7 +96,30 @@ function related_post_activation()
 	}
 
 
+function related_post_deactivation()
+	{
+		
+		
+		$related_post_version = get_option('related_post_version');
+		
+		$api_url = 'http://paratheme.com/installstats/';
+		$wp_version = get_bloginfo('version'); // no change
+		$domain = get_bloginfo( 'url' ); // no change
+		$item_slug = basename(dirname(__FILE__)); // no change
+		$item_version = $related_post_version; // current item version
+		$item_type = 'plugin'; // plugin, theme, addon		
+		$action = 'deactivate'; //active, deactivate, install, uninstall
+	
+		$request_string = array(
+				'user-agent' => $wp_version . '; ' . $domain . '; ' . $item_slug . '; ' . $item_version . '; ' . $item_type. '; ' . $action,
 
+				
+			);
+
+		wp_remote_post($api_url, $request_string);
+
+		
+	}
 
 
 add_action('admin_menu', 'related_post_menu_init');
