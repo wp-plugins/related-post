@@ -27,7 +27,7 @@
 .related-post.text ul.post-list li {
   list-style: inside url("images/list-icon.png") none;
   margin: 0;
-  padding: 0 15px;
+  padding: 3px 15px;
 }
 
 .related-post.text ul.post-list li a {

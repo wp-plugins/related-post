@@ -5,6 +5,7 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 function related_post_theme_text()
 	{
 		
+		$related_post_max_number = get_option( 'related_post_max_number' );	
 		$related_post_headline = get_option( 'related_post_headline' );
 		$related_post_title_font_size = get_option( 'related_post_title_font_size' );
 		$related_post_title_font_color = get_option( 'related_post_title_font_color' );
@@ -37,7 +38,7 @@ function related_post_theme_text()
 					$tagIDs[$i] = $tags[$i]->term_id;
 					}
 					
-					$args = array('tag__in' => $tagIDs, 'post__not_in' => array($post_id), 'showposts' => 5, 'ignore_sticky_posts' => 1);
+					$args = array('tag__in' => $tagIDs, 'post__not_in' => array($post_id), 'showposts' => $related_post_max_number, 'ignore_sticky_posts' => 1);
 					$my_query = new WP_Query($args);
 					
 					if ($my_query->have_posts())
@@ -70,7 +71,7 @@ function related_post_theme_text()
 						$cat = get_the_category();
 						$category = $cat[0]->cat_ID;
 						global $wp_query, $paged, $post;
-						$nextargs = array('cat' => $category, 'posts_per_page' => 5, 'post__not_in' => array($post_id),);
+						$nextargs = array('cat' => $category, 'posts_per_page' => $related_post_max_number, 'post__not_in' => array($post_id),);
 						$nextloop = new WP_Query($nextargs);
 						while ($nextloop->have_posts()) : $nextloop->the_post();
 							
