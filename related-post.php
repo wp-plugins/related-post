@@ -75,22 +75,7 @@ function related_post_activation()
 		update_option('related_post_customer_type', $related_post_customer_type); //update plugin version.
 		
 		
-		// for activation
-		$api_url = 'http://paratheme.com/installstats/';
-		$wp_version = get_bloginfo('version'); // no change
-		$domain = get_bloginfo( 'url' ); // no change
-		$item_slug = basename(dirname(__FILE__)); // no change
-		$item_version = $related_post_version; // current item version
-		$item_type = 'plugin'; // plugin, theme, addon		
-		$action = 'active'; //active, inactive, install, uninstall
-	
-		$request_string = array(
-				'user-agent' => $wp_version . '; ' . $domain . '; ' . $item_slug . '; ' . $item_version . '; ' . $item_type. '; ' . $action,
 
-				
-			);
-
-		wp_remote_post($api_url, $request_string);
 		
 		
 	}
@@ -100,23 +85,7 @@ function related_post_deactivation()
 	{
 		
 		
-		$related_post_version = get_option('related_post_version');
-		
-		$api_url = 'http://paratheme.com/installstats/';
-		$wp_version = get_bloginfo('version'); // no change
-		$domain = get_bloginfo( 'url' ); // no change
-		$item_slug = basename(dirname(__FILE__)); // no change
-		$item_version = $related_post_version; // current item version
-		$item_type = 'plugin'; // plugin, theme, addon		
-		$action = 'deactivate'; //active, deactivate, install, uninstall
-	
-		$request_string = array(
-				'user-agent' => $wp_version . '; ' . $domain . '; ' . $item_slug . '; ' . $item_version . '; ' . $item_type. '; ' . $action,
 
-				
-			);
-
-		wp_remote_post($api_url, $request_string);
 
 		
 	}
